@@ -1,3 +1,4 @@
 ﻿Console.Write("Введите число:");
-int a = int.Parse(Console.ReadLine());
+var s = Console.ReadLine();
+int a = s == null ? 0 : int.Parse(s);
 Console.WriteLine("Квадрат этого числа = " + (a * a).ToString());

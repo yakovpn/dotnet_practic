@@ -1,5 +1,5 @@
 ﻿int b = 1;
-Console.Write($"Ведите число N (N должно бфть больше {b}):");
+Console.Write($"Ведите число N (N должно быть больше {b}):");
 var s = Console.ReadLine();
 int N = s == null ? 0 : int.Parse(s);
 if (N <= b)

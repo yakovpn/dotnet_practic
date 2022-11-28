@@ -1,0 +1,12 @@
+﻿Console.Write("Ведите первое число:");
+var s = Console.ReadLine();
+int max = s == null ? 0 : int.Parse(s);
+Console.Write("Ведите второе число:");
+s = Console.ReadLine();
+int a = s == null ? 0 : int.Parse(s);
+Console.Write("Ведите третье число:");
+s = Console.ReadLine();
+int b = s == null ? 0 : int.Parse(s);
+max = max < a ? a : max;
+max = max < b ? b : max;
+Console.WriteLine($"Максимальное из трех чисел: {max}");

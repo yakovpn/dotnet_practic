@@ -24,7 +24,7 @@ if (a < 10000 || a > 99999)
     Console.WriteLine("Ошибка ввода");
     return;
 }
-int[] num = new int[6];
+int[] num = new int[5];
 for (int i = 0; i < 5; i++)
 {
     num[4-i]=a/(Convert.ToInt32(Math.Pow(10,i)))%10;

@@ -19,12 +19,16 @@ int ReadInt(string message, bool filterEnable = false, int minRange = 0, int max
 }
 
 int a = ReadInt("Введите числоа А:");
-int b = ReadInt("Введите числоа B:",true,1);
+int b = ReadInt("Введите числоа B:", true, 1);
 
 int res = a;
-while (b > 1)
+//while (b > 1)
+//{
+//    res = res * a;
+//    b--;
+//}
+for (int i = 1; i < b; i++)
 {
-    res = res * a;
-    b--;
+  res = res * a;
 }
 Console.WriteLine($"Число А:{a} в степени B:{b} равно {res}");

@@ -171,5 +171,30 @@ public class DNPTools
         return arrayToFill;
 
     }
+    /// <summary>
+    /// Fill matrix random values
+    /// </summary>
+    /// <returns>
+    ///  Double[,] filled matrix array
+    /// </returns>
+    /// <param name="arrayToFill">
+    /// Double[,] array
+    /// </param>
+    /// <param name="minValue">
+    /// minimal integer array value
+    /// </param>
+    /// <param name="maxValue">
+    /// maximal integer array value
+    /// </param>
+    public static double[,] FillDoubleMatrix(double[,] arrayToFill, double minValue, double maxValue)
+    {
+        int numRows = arrayToFill.GetLength(0);
+        int numColumns = arrayToFill.GetLength(1);
+        for (int r = 0; r < numRows; r++)
+            for (int c = 0; c < numColumns; c++)
+                arrayToFill[r, c] = new Random().NextDouble() * (maxValue - minValue) + minValue;
+        return arrayToFill;
+    }
+
 
 }

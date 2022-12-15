@@ -67,7 +67,6 @@ public class DNPTools
     /// Int32 array
     public static void PrintArr(Array arrayToPrint)
     {
-        Console.WriteLine(arrayToPrint.Rank);
         int numRows, numColumns;
         if (arrayToPrint.Rank == 1)
         {

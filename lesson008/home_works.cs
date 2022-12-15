@@ -87,4 +87,81 @@ public partial class lesson008
             if (e.Message == "multiplicate matrix failed") Console.WriteLine("Матрицы нельзя перемножать");
         }
     }
+    //Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+    //Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+    private Array fillTwoNum3dMatrixUnique(Array arr, int minValue, int maxValue)
+    {
+        int valuesRange = maxValue - minValue;
+        if (arr.Rank != 3) throw new Exception("Массив не трехмерный!");
+        if (arr.GetLength(0) * arr.GetLength(1) * arr.GetLength(2) > maxValue - minValue)
+            throw new Exception("Не хватит диапазона значений для заполнения такой 3d матрицы");
+        for (int x = 0; x < arr.GetLength(0); x++)
+            for (int y = 0; y < arr.GetLength(1); y++)
+                for (int z = 0; z < arr.GetLength(2); z++)
+                    while (true)
+                    {
+                        int newVal = new Random().Next(minValue, maxValue);
+                        bool valueInArr = false;
+                        foreach (int item in arr)
+                            if (item == newVal) { valueInArr = true; break; }
+                        if (!valueInArr)
+                        {
+                            arr.SetValue(newVal, x, y, z);
+                            break;
+                        }
+                    }
+        return arr;
+    }
+    private void print3dMatrixWithIndex(Array arr)
+    {
+        for (int x = 0; x < arr.GetLength(0); x++)
+            for (int y = 0; y < arr.GetLength(1); y++)
+            {
+                for (int z = 0; z < arr.GetLength(2); z++)
+                    Console.Write($" {arr.GetValue(x, y, z)} ({x},{y},{z}) ");
+                Console.WriteLine();
+            }
+
+    }
+
+    public void homeWorkBody4()
+    {
+        int x = DNPTools.ReadInt("Введите количество строк:", true, 1, 89);
+        int y = DNPTools.ReadInt("Введите количество колонок:", true, 1, 89);
+        int z = DNPTools.ReadInt("Введите глубину:", true, 1, 89);
+        try
+        {
+            Array arr = fillTwoNum3dMatrixUnique(new int[x, y, z], 10, 99);
+            print3dMatrixWithIndex(arr);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+    }
+    //Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+    public void homeWorkBody5()
+    {
+        int m = DNPTools.ReadInt("Введите m:", true, 1);
+        int[,] arr = new int[m, m];
+        int x = 0, y = 0, size = m, count = 1;
+
+        while (size > 0)
+        {
+            for (int i = y; i <= y + size - 1; i++)
+                arr[x, i] = count++;
+            for (int j = x + 1; j <= x + size - 1; j++)
+                arr[j, y + size - 1] = count++;
+            for (int i = y + size - 2; i >= y; i--)
+                arr[x + size - 1, i] = count++;
+            for (int i = x + size - 2; i >= x + 1; i--)
+                arr[i, y] = count++;
+            x = x + 1;
+            y = y + 1;
+            size = size - 2;
+        }
+        DNPTools.PrintArr(arr);
+
+    }
 }
